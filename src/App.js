@@ -1,13 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
 
 function App() {
+  console.log(process.env.REACT_APP_API_ENDPOINT)
+
+  useEffect(() => {
+    fetch(process.env.REACT_APP_API_ENDPOINT)
+    .then((res)=> res.json())
+    .then((data)=> console.log('data from server ->', data))
+    .catch((err)=> console.error(err))
+  })
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> hey class.
         </p>
         <a
           className="App-link"
